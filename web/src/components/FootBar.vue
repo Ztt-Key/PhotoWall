@@ -9,13 +9,12 @@
           <p class="top-p" style="font-size: larger;">欢迎来到一窗月光，分享你的故事和照片。</p>
           <div class="state">
             <span></span>
-            <span>总访问量：10000</span>
+            <span>QQ:1847860947</span>
           </div>
         </div>
         <div class="link">
           <div class="link-inner">
             <a href="#">关于我们312312312</a>
-        
           </div>
         </div>
         <div class="foot-right">

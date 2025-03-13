@@ -43,7 +43,6 @@ defineProps({
     padding: 0 20px;
 }
 
-//nom
 .primary{
     background: @gray-1;
     color: @gray-10;

@@ -1,16 +1,28 @@
 <template>
   <div class="wall-message">
-    wall
+    <p class="title">{{ wallType[id].name }}</p>
+    <p class="slogan">{{ wallType[id].slogan }}</p>
+   <div class="label">
+    <p class="label-list " :class="{lbselected:ztable==-1}"  @click="SelectNode(-1)" >全部</p>
+    <p class="label-list" :class="{lbselected:ztable==index}" @click="SelectNode(index)" v-for="(item,index) in tagType[id]" :key="index">{{ item }}</p>
+   </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-
+import { ref } from 'vue'
+import {wallType,tagType}  from '../utils/data'
 const route = useRoute()
-const id = route.query.id
+const routeid = route.query.id
+console.log('当前路由参数:', routeid)
+const id  = ref(0);
+const ztable = ref(-1) //当前对应标签
 
-console.log('当前路由参数:', id)
+//切换标签
+const SelectNode = (e:any) => {
+  ztable.value = e
+}
 </script>
 
 <style scoped lang="less">
