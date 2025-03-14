@@ -6,6 +6,11 @@
     <p class="label-list " :class="{lbselected:ztable==-1}"  @click="SelectNode(-1)" >全部</p>
     <p class="label-list" :class="{lbselected:ztable==index}" @click="SelectNode(index)" v-for="(item,index) in tagType[id]" :key="index">{{ item }}</p>
    </div>
+   <div>
+    <div class="card">
+      <Node-Card v-for="(item,index) in data.list" :key="index" :node="item"></Node-Card>
+    </div>
+   </div>
   </div>
 </template>
 
@@ -13,13 +18,16 @@
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import {wallType,tagType}  from '../utils/data'
+import NodeCard from '../components/NodeCard.vue'
+import { data } from '../mock/data'
 const route = useRoute()
 const routeid = route.query.id
 console.log('当前路由参数:', routeid)
 const id  = ref(0);
-const ztable = ref(-1) //当前对应标签
+const ztable = ref(-1) //当前对应标签// 使用 Mock
+console.log(data);
 
-//切换标签
+
 const SelectNode = (e:any) => {
   ztable.value = e
 }
@@ -74,9 +82,9 @@ const SelectNode = (e:any) => {
     flex-wrap: wrap;
     padding-top: 28px;
     margin: auto;
-
     .card-inner {
       margin: 6px;
+      
     }
 
     .cardSelected {
