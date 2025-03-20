@@ -10,6 +10,10 @@
     <div class="card">
       <Node-Card v-for="(item,index) in data.list" :key="index" :node="item"></Node-Card>
     </div>
+    <div class="add" :style="{bottom:addButton+'px'}" @click="showModal()" >
+      <span class="iconfont icon-tianjia-"></span>
+    </div>
+    <YCYG-Modal :shows="add"> </YCYG-Modal>
    </div>
   </div>
 </template>
@@ -20,16 +24,23 @@ import { ref } from 'vue'
 import {wallType,tagType}  from '../utils/data'
 import NodeCard from '../components/NodeCard.vue'
 import { data } from '../mock/data'
+import YCYGModal from '../components/YCModal.vue'
 const route = useRoute()
 const routeid = route.query.id
 console.log('当前路由参数:', routeid)
 const id  = ref(0);
 const ztable = ref(-1) //当前对应标签// 使用 Mock
 console.log(data);
-
+const addButton = ref(30)
+const add = ref(false)
 
 const SelectNode = (e:any) => {
   ztable.value = e
+}
+
+//显示留言
+const showModal = () => {
+  add.value = true
 }
 </script>
 
@@ -106,11 +117,13 @@ const SelectNode = (e:any) => {
 
   .add {
     width: 56px;
-    height: 56px;
+    height: 50px;
+
     background: @gray-1;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
     border-radius: 28px;
     position: fixed;
+    z-index: 10;
     right: 30px;
     display: flex;
     justify-content: center;

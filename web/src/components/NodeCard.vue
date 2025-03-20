@@ -1,5 +1,5 @@
 <template>
-    <div class="yk-node-card" :style="{ width: width, background: 'rgba(0,0,0,0.1)' }">
+    <div class="yk-node-card" :style="{ width: width, background: 'rgba(255, 255, 255, 0.8)' }">
         <div class="top">
             <p class="time">{{ new Date(node.moment).toLocaleDateString() }}</p>
             <p class="label">{{ node.label }}</p>
